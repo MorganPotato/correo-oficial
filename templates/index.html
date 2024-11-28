@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Recetas</title>
+</head>
+<body>
+
+    <h2>Lista de Recetas</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <ul>
+        {% for receta in recetas %}
+            <li>
+                <strong>{{ receta["titulo"] }}</strong><br>
+                <em>Ingredientes:</em> {{ receta["ingredientes"] }}<br>
+                <em>Instrucciones:</em> {{ receta["instrucciones"] }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="{{ url_for('nueva_receta') }}">Crear Nueva Receta</a>
+
+</body>
+</html>

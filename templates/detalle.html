@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ receta["titulo"] }}</h2>
+<h3>Ingredientes:</h3>
+<p>{{ receta["ingredientes"] }}</p>
+<h3>Instrucciones:</h3>
+<p>{{ receta["instrucciones"] }}</p>
+<a href="{{ url_for('index') }}">Volver a la lista</a>
+{% endblock %}
