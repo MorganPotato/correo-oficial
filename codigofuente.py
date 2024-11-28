@@ -9,12 +9,12 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = 'tucorreo@gmail.com'  # Reemplaza con tu correo
-app.config['MAIL_PASSWORD'] = 'tucontraseña'  # Reemplaza con tu contraseña o app password
-app.config['MAIL_DEFAULT_SENDER'] = 'tucorreo@gmail.com'  # Reemplaza con tu correo
-app.secret_key = 'supersecretkey'  # Necesario para usar flash()
+app.config['MAIL_USERNAME'] = 'tucorreo@gmail.com'  
+app.config['MAIL_PASSWORD'] = 'tucontraseña'  # 
+app.config['MAIL_DEFAULT_SENDER'] = 'tucorreo@gmail.com' 
+app.secret_key = 'supersecretkey'  
 
-# Configuración de Celery
+# celery aca
 def make_celery(app):
     celery = Celery(
         app.import_name,
@@ -32,7 +32,7 @@ app.config.update(
 celery = make_celery(app)
 mail = Mail(app)
 
-# Lista de recetas en memoria
+# Lista de recetas 
 recetas = []
 
 
@@ -56,7 +56,7 @@ def nueva_receta():
         })
 
         # Enviar correo después de agregar receta
-        destinatario = request.form["correo"]  # Puedes pedir el correo en el formulario
+        destinatario = request.form["correo"] 
         send_email_async(destinatario, titulo)
 
         flash('Receta creada con éxito y correo enviado.', 'success')
