@@ -25,8 +25,8 @@ def make_celery(app):
     return celery
 
 app.config.update(
-    CELERY_BROKER_URL='redis://localhost:6379/0',  # Usamos Redis como broker
-    CELERY_RESULT_BACKEND='redis://localhost:6379/0',  # Redis para almacenar resultados
+    CELERY_BROKER_URL='redis://localhost:6379/0',  
+    CELERY_RESULT_BACKEND='redis://localhost:6379/0',  
 )
 
 celery = make_celery(app)
